@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,19 +8,27 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Coding Quiz: JS</title>
 </head>
+
 <body class="body">
     <header>
         <nav>
-           <a href="./highscores.html" class="highscores-nav">View High Scores</a>
+            <a href="./highscores.html" class="highscores-nav">View High Scores</a>
         </nav>
         <span class="timer" id="timer">Timer: 100</span>
     </header>
 
     <div class="quiz-content-wrapper">
         <h1 class="quiz-heading">Do You Know About <span class="quiz-subtitle">JavaScript DOM Manipulation</span>?</h1>
-        <p class="quiz-description">Answer as many JavaScript-related questions as you can before the time runs out. The time you have left after answering all of the questions is your score. Be careful! Each wrong answer will subtract 10 seconds from the timer and 10 points from your score. Good luck!</p>
+        <p class="quiz-description">Answer as many JavaScript-related questions as you can before the time runs out. The
+            time you have left after answering all of the questions is your score. Be careful! Each wrong answer will
+            subtract 10 seconds from the timer and 10 points from your score. Good luck!</p>
         <button type="button" class="quiz-button">Get Started!</button>
+        <div class="question-and-answer">
+        <div class="question-wrapper"></div>
+        <div class="answer-list"> </div>
+    </div>
     </div>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
