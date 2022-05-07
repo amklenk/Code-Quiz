@@ -19,6 +19,7 @@ THEN I can save my initials and score
 
 1. pseudocode 
 2. Decide what goes in HTML and CSS files
+3a. Write what is going to be fixed on the page before the JS starts (onclick)
 3. create skeleton of variables, functions, event listeners
 4. Go through each function, code and debug a line at a time
 5. Try every way to break it!
