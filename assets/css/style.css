@@ -55,6 +55,7 @@ background-color: var(--secondary-color);
 
 .timer {
   color: var(--tertiary-color);
+  margin-left: auto;
 }
 /*end header styling*/
 
