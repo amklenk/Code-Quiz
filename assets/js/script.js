@@ -50,7 +50,7 @@ var questionsObj = [
         answers: [
             "a. liEl.setAttribute('data-name', 'list-item1')",
             "b. document.setAttribute('data-name', 'list-item1')",
-            "c. liEL.setDataAttr('name', 'list-item1')",
+            "c. liEl.setDataAttr('name', 'list-item1')",
             "d. document.setDataAttr('name', 'list-item1')",
         ],
     },
@@ -470,9 +470,9 @@ function questionFive(){
     questionEl.setAttribute("class", "question");
 
     var imageEl = document.createElement("img");
-    imageEl.setAttribute = ("src", "");
+    imageEl.setAttribute = ("src", "./assets/images/question5img");
     imageEl.setAttribute = ("class", "code-image");
-    
+
     var correctEl = document.createElement("button");
     correctEl.textContent = questionsObj[4].answers[0];
     correctEl.setAttribute("class", "answer");
@@ -490,6 +490,7 @@ function questionFive(){
     incorrectdEl.setAttribute("class", "answer");
 
     mainEl.append(questionEl);
+    mainEl.append(imageEl);
     listEl.append(correctEl);
     listEl.append(incorrectbEl);
     listEl.append(incorrectcEl);
@@ -507,7 +508,7 @@ function questionFive(){
             incorrectcEl.remove();
             incorrectdEl.remove();
             trueMessage.remove();
-            questionFive();
+            submitScore();
         }
     });
 
@@ -524,7 +525,7 @@ function questionFive(){
             incorrectcEl.remove();
             incorrectdEl.remove();
             falseMessage.remove();
-            questionFive();
+            submitScore();
         }
     });
 
@@ -541,7 +542,7 @@ function questionFive(){
             incorrectcEl.remove();
             incorrectdEl.remove();
             falseMessage.remove();
-            questionFive();
+            submitScore();
         }
     });
     incorrectdEl.addEventListener("click", function () {
@@ -557,14 +558,17 @@ function questionFive(){
             incorrectcEl.remove();
             incorrectdEl.remove();
             falseMessage.remove();
-            questionFive();
+            submitScore();
         }
     });
-    submitScore();
 };
 
 //function that shows the final page
 function submitScore(){
+//h element "All done!"
+//p element "Your high score is" + timeLeft
+//input with "enter intitals"
+//submit button that takes you to highscore page with data
 
 };
 //function that stores the high scores
