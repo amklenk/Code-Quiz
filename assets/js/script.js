@@ -1,21 +1,3 @@
-//Pseudocode for project
-//The site has the high score nav and the timer in the header, it has the title, description and start button upon visiting the site
-//When the user clicks the button (event listener)
-//the timer starts
-//the page changes to show the first quiz question (appendChild)
-//the high score nav is still on the page
-//When the user answers a question (event listner with data attributes event.target)
-//each answer choice will (with event.target)
-//display a prompt of correct or incorrect (data attributes with event.target), disappears after click
-//take away from the timer or not (incorrect)
-//The user will repeat this with each question
-//the last question will direct the user to input their username, bringing with it the high score
-//highscore is time left!
-//The high score page will have an input for the user name to go with the saved score
-//this will be saved in local storage (JSONstringify)
-//this array will be called upon with each browser refresh (parse)
-//the scores will be sorted in an ordered list (Array.sort)
-
 //global variables
 var timeLeft = 100;
 var timerEl = document.querySelector("#timer");
@@ -40,6 +22,36 @@ var questionsObj = [
             "b. What gets loaded inside of the window ",
             "c. The body elements of the HTML",
             "d. A file from a word processor",
+        ],
+    },
+
+    {
+        question3: "3. Which method do you use to add elements as the last element of a parent element?",
+        answers: [
+            "a. .addElement()",
+            "b. .appendElement()",
+            "c. .appendChild()",
+            "d. .addChild()",
+        ],
+    },
+
+    {
+        question4: "4. What is a data-attribute?",
+        answers: [
+            "a. An attribute selected by the user",
+            "b. An attribute for styling numbers",
+            "c. An attribute that is used to hold array data",
+            "d. A custom attribute for targeting specific elements",
+        ],
+    },
+
+    {
+        question5: "5. Which of the lines of code below sets the data-attribute correctly for the following selected element?",
+        answers: [
+            "a. liEl.setAttribute('data-name', 'list-item1')",
+            "b. document.setAttribute('data-name', 'list-item1')",
+            "c. liEL.setDataAttr('name', 'list-item1')",
+            "d. document.setDataAttr('name', 'list-item1')",
         ],
     },
 
@@ -106,44 +118,65 @@ function questionOne() {
             trueMessage.textContent = "That's right!";
             trueMessage.setAttribute("class", "correct-message");
             listEl.appendChild(trueMessage);
+            questionEl.remove();
+            correctEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            trueMessage.remove();
+            questionTwo();
         }
     });
 
     incorrectbEl.addEventListener("click", function () {
         if (true) {
-            var trueMessage = document.createElement("h3");
-            trueMessage.textContent = "Sorry, that's not right!";
-            trueMessage.setAttribute("class", "correct-message");
-            listEl.appendChild(trueMessage);
-            var timeLeft = timeLeft - 20;
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+           falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionTwo();
         }
     });
 
     incorrectcEl.addEventListener("click", function () {
         if (true) {
-            var trueMessage = document.createElement("h3");
-            trueMessage.textContent = "Sorry, that's not right!";
-            trueMessage.setAttribute("class", "correct-message");
-            listEl.appendChild(trueMessage);
-            var timeLeft = timeLeft - 20;
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionTwo();
         }
     });
     incorrectdEl.addEventListener("click", function () {
         if (true) {
-            var trueMessage = document.createElement("h3");
-            trueMessage.textContent = "Sorry, that's not right!";
-            trueMessage.setAttribute("class", "correct-message");
-            listEl.appendChild(trueMessage);
-            var timeLeft = timeLeft - 20;
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionTwo();
         }
     });
-    questionEl.remove();
-    correctEl.remove();
-    incorrectbEl.remove();
-    incorrectcEl.remove();
-    incorrectdEl.remove();
-    trueMessage.remove();
-    questionTwo();
 };
 
 function questionTwo() {
@@ -173,12 +206,371 @@ function questionTwo() {
     listEl.append(incorrectcEl);
     listEl.append(incorrectdEl);
 
+    correctEl.addEventListener("click", function () {
+        if (true) {
+            var trueMessage = document.createElement("h3");
+            trueMessage.textContent = "That's right!";
+            trueMessage.setAttribute("class", "correct-message");
+            listEl.appendChild(trueMessage);
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            trueMessage.remove();
+            questionThree();
+        }
+    });
+
+    incorrectaEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionThree();
+        }
+    });
+
+    incorrectcEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionThree();
+        }
+    });
+    incorrectdEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionThree();
+        }
+    });
+
 };
+
+function questionThree() {
+    var questionEl = document.createElement("h2");
+    questionEl.textContent = questionsObj[2].question3;
+    questionEl.setAttribute("class", "question");
+
+    var incorrectaEl = document.createElement("button");
+    incorrectaEl.textContent = questionsObj[2].answers[0];
+    incorrectaEl.setAttribute("class", "answer");
+
+    var incorrectbEl = document.createElement("button");
+    incorrectbEl.textContent = questionsObj[2].answers[1];
+    incorrectbEl.setAttribute("class", "answer");
+
+    var correctEl = document.createElement("button");
+    correctEl.textContent = questionsObj[2].answers[2];
+    correctEl.setAttribute("class", "answer");
+
+    var incorrectdEl = document.createElement("button");
+    incorrectdEl.textContent = questionsObj[2].answers[3];
+    incorrectdEl.setAttribute("class", "answer");
+
+    mainEl.append(questionEl);
+    listEl.append(incorrectaEl);
+    listEl.append(incorrectbEl);
+    listEl.append(correctEl);
+    listEl.append(incorrectdEl);
+
+    correctEl.addEventListener("click", function () {
+        if (true) {
+            var trueMessage = document.createElement("h3");
+            trueMessage.textContent = "That's right!";
+            trueMessage.setAttribute("class", "correct-message");
+            listEl.appendChild(trueMessage);
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectbEl.remove();
+            incorrectdEl.remove();
+            trueMessage.remove();
+            questionFour();
+        }
+    });
+
+    incorrectaEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectbEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionFour();
+        }
+    });
+
+    incorrectbEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectbEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionFour();
+        }
+    });
+    incorrectdEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectbEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionFour();
+        }
+    });
+
+};
+
+function questionFour() {
+    var questionEl = document.createElement("h2");
+    questionEl.textContent = questionsObj[3].question4;
+    questionEl.setAttribute("class", "question");
+
+    var incorrectaEl = document.createElement("button");
+    incorrectaEl.textContent = questionsObj[3].answers[0];
+    incorrectaEl.setAttribute("class", "answer");
+
+    var incorrectbEl = document.createElement("button");
+    incorrectbEl.textContent = questionsObj[3].answers[1];
+    incorrectbEl.setAttribute("class", "answer");
+
+    var incorrectcEl = document.createElement("button");
+    incorrectcEl.textContent = questionsObj[3].answers[2];
+    incorrectcEl.setAttribute("class", "answer");
+
+    var correctEl = document.createElement("button");
+    correctEl.textContent = questionsObj[3].answers[3];
+    correctEl.setAttribute("class", "answer");
+
+    mainEl.append(questionEl);
+    listEl.append(incorrectaEl);
+    listEl.append(incorrectbEl);
+    listEl.append(incorrectcEl);
+    listEl.append(correctEl);
+
+    correctEl.addEventListener("click", function () {
+        if (true) {
+            var trueMessage = document.createElement("h3");
+            trueMessage.textContent = "That's right!";
+            trueMessage.setAttribute("class", "correct-message");
+            listEl.appendChild(trueMessage);
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            trueMessage.remove();
+            questionFive();
+        }
+    });
+
+    incorrectaEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            falseMessage.remove();
+            questionFive();
+        }
+    });
+
+    incorrectbEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            falseMessage.remove();
+            questionFive();
+        }
+    });
+    incorrectcEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectaEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            falseMessage.remove();
+            questionFive();
+        }
+    });
+
+};
+
+function questionFive(){
+    var questionEl = document.createElement("h2");
+    questionEl.textContent = questionsObj[4].question5;
+    questionEl.setAttribute("class", "question");
+
+    var imageEl = document.createElement("img");
+    imageEl.setAttribute = ("src", "");
+    imageEl.setAttribute = ("class", "code-image");
+    
+    var correctEl = document.createElement("button");
+    correctEl.textContent = questionsObj[4].answers[0];
+    correctEl.setAttribute("class", "answer");
+
+    var incorrectbEl = document.createElement("button");
+    incorrectbEl.textContent = questionsObj[4].answers[1];
+    incorrectbEl.setAttribute("class", "answer");
+
+    var incorrectcEl = document.createElement("button");
+    incorrectcEl.textContent = questionsObj[4].answers[2];
+    incorrectcEl.setAttribute("class", "answer");
+
+    var incorrectdEl = document.createElement("button");
+    incorrectdEl.textContent = questionsObj[4].answers[3];
+    incorrectdEl.setAttribute("class", "answer");
+
+    mainEl.append(questionEl);
+    listEl.append(correctEl);
+    listEl.append(incorrectbEl);
+    listEl.append(incorrectcEl);
+    listEl.append(incorrectdEl);
+
+    correctEl.addEventListener("click", function () {
+        if (true) {
+            var trueMessage = document.createElement("h3");
+            trueMessage.textContent = "That's right!";
+            trueMessage.setAttribute("class", "correct-message");
+            listEl.appendChild(trueMessage);
+            questionEl.remove();
+            correctEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            trueMessage.remove();
+            questionFive();
+        }
+    });
+
+    incorrectbEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionFive();
+        }
+    });
+
+    incorrectcEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionFive();
+        }
+    });
+    incorrectdEl.addEventListener("click", function () {
+        if (true) {
+            var falseMessage = document.createElement("h3");
+            falseMessage.textContent = "Sorry, that's not right!";
+            falseMessage.setAttribute("class", "incorrect-message");
+            listEl.appendChild(falseMessage);
+            timeLeft = timeLeft - 20;
+            questionEl.remove();
+            correctEl.remove();
+            incorrectbEl.remove();
+            incorrectcEl.remove();
+            incorrectdEl.remove();
+            falseMessage.remove();
+            questionFive();
+        }
+    });
+    submitScore();
+};
+
 //function that shows the final page
+function submitScore(){
+
+};
 //function that stores the high scores
 //function that prints the scores on the highscores page in an ordered list by score
 
-//Event Listeners
+//Start of Game Event Listener
 startButtonEl.addEventListener("click", function () {
     countdown();
     startQuiz();
