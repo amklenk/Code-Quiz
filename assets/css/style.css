@@ -69,7 +69,7 @@ header {
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin: 10% auto;
+  margin: 5% auto;
   border: 1px solid var(--quinary-color);
   box-shadow: 0 0 10px var(--quinary-color);
   padding: 10px 10px;
@@ -88,7 +88,7 @@ header {
   color: var(--quaternary-color);
 }
 
-.quiz-description {
+.quiz-description, .high-score-text {
   font-size: 20px;
   color: #ffd580;
   margin-top: 5%;
@@ -130,6 +130,10 @@ header {
   color: white;
 }
 
+.heading{
+    text-align: left;
+}
+
 .answer-list {
   display: flex;
   flex-direction: column;
@@ -166,8 +170,7 @@ color: var(--tertiary-color);
 }
 
 .code-image {
-width: 100px;
-height: 50px;
+height: 5%;
 }
 
 /*end quiz and answer styling*/
