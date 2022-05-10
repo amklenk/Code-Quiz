@@ -5,6 +5,7 @@
   --tertiary-color: #ff6363;
   --quaternary-color: #cf9fff;
   --quinary-color: #05e9ff;
+  --default-margin: 10px;
 }
 /*variables end*/
 
@@ -28,6 +29,7 @@ body {
 }
 /*end body styling*/
 
+/*index page styling*/
 /*header styling*/
 header {
   display: flex;
@@ -40,7 +42,7 @@ header {
 .highscores-nav,
 .timer {
   text-decoration: none;
-  margin: 20px 10px 20px 10px;
+  margin: 20px var(--default-margin) 20px var(--default-margin);
   font-size: 20px;
 }
 
@@ -72,7 +74,7 @@ header {
   margin: 5% auto;
   border: 1px solid var(--quinary-color);
   box-shadow: 0 0 10px var(--quinary-color);
-  padding: 10px 10px;
+  padding: var(--default-margin) var(--default-margin);
 }
 
 .quiz-heading,
@@ -95,7 +97,7 @@ header {
   margin-bottom: 5%;
 }
 
-.quiz-button {
+.quiz-button, .submit-button {
   font-size: 20px;
   font-family: monospace;
   color: var(--tertiary-color);
@@ -104,7 +106,7 @@ header {
   padding: 2px;
 }
 
-.quiz-button:hover {
+.quiz-button:hover, .submit-button:hover {
   color: var(--primary-color);
   background-color: var(--quinary-color);
   border: 1px solid var(--tertiary-color);
@@ -121,13 +123,14 @@ header {
 }
 
 .question-wrapper {
-  text-align: center;
+  text-align: left;
 }
 
 .question {
   font-size: 30px;
   font-family: monospace;
   color: white;
+  align-items: flex-start;
 }
 
 .heading{
@@ -170,8 +173,48 @@ color: var(--tertiary-color);
 }
 
 .code-image {
-height: 5%;
+height: 20px;
 }
 
+/* fix this section styling */
+.high-score-text {
+margin-top: var(--default-margin);
+margin-bottom: 0px;
+font-size: 25px;
+color: var(--secondary-color);
+}
+
+.label {
+    margin-top: var(--default-margin);
+    padding-bottom: 10px;
+    margin-bottom: var(--default-margin);
+    text-align: left;
+    color: var(--quinary-color);
+    font-size: 20px;
+}
+
+.submit-wrapper {
+display: flex;
+margin-top: var(--default-margin);
+}
+
+.form-input {
+    border: 2px solid var(--quinary-color);
+    display: inline;
+    font-family: monospace;
+    font-size: 16px;
+    color: var(--primary-color);
+    width: 30%;
+    border-radius: 10px;
+    margin-left: var(--default-margin);
+    margin-right: var(--default-margin);
+    background-color: white;
+}
+
+.submit-button {
+    display: inline;
+    font-size: 20px;
+}
 /*end quiz and answer styling*/
 /*end div styling*/
+

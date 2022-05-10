@@ -52,6 +52,12 @@ body {
     color: white;
 }
 
+.highscores-list-item {
+    font-size: 20px;
+    color: var(--tertiary-color);
+    text-align: left;
+}
+
 .button-wrapper {
     display: flex;
     justify-content: space-between;

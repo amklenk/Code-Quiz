@@ -1,12 +1,16 @@
 //global variables
 //add in local storage info
-// var highScoreArray = JSON.parse(localStorage.getItem("highScore"))||[];
+var userScores = JSON.parse(localStorage.getItem("highScore"))||[];
 var timeLeft = 100;
 var timerEl = document.querySelector("#timer");
 var mainEl = document.querySelector(".question-wrapper");
 var listEl = document.querySelector(".answer-list");
+var messageWrapEl = document.querySelector(".message-list");
+var imageWrapEl = document.querySelector(".image-wrapper")
 var startButtonEl = document.querySelector(".quiz-button");
+var submitWrapEl = document.querySelector(".submit-wrapper")
 var questionEl;
+var imageEl;
 var questionsObj = [
     {
         question1: "1. The DOM stands for _______________.",
@@ -27,7 +31,7 @@ var questionsObj = [
             "c. The body elements of the HTML",
             "d. A file from a word processor",
         ],
-        correct:  "b. What gets loaded inside of the window ",
+        correct: "b. What gets loaded inside of the window ",
     },
 
     {
@@ -64,6 +68,8 @@ var questionsObj = [
     },
 
 ];
+var scoresListEl = document.querySelector(".highscores-list");
+var deleteButtonEl = document.querySelector(".clear-btn");
 
 //functions
 //function for the timer
@@ -74,7 +80,7 @@ function countdown() {
             timerEl.textContent = "Timer: " + timeLeft;
             timeLeft--;
         } else {
-            timerEl.textContent = "Timer:" + "";
+            timerEl.textContent = "Timer:" + "--";
             clearInterval(timeInterval);
             //add call to last page here to submit high score
         }
@@ -109,16 +115,14 @@ function questionOne() {
                 var falseMessage = document.createElement("h3");
                 falseMessage.textContent = "Sorry, that's not right!";
                 falseMessage.setAttribute("class", "incorrect-message");
-                listEl.appendChild(falseMessage);
+                messageWrapEl.appendChild(falseMessage);
                 timeLeft = timeLeft - 20;
             } else {
                 var trueMessage = document.createElement("h3");
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
-                listEl.appendChild(trueMessage);
+                messageWrapEl.appendChild(trueMessage);
             }
-            questionEl.remove();
-            listEl.innerHTML = "";
             questionTwo();
         }
         listEl.appendChild(buttonEl);
@@ -126,6 +130,10 @@ function questionOne() {
 };
 
 function questionTwo() {
+    mainEl.innerHTML = "";
+    listEl.innerHTML = "";
+    messageWrapEl.innerHTML = "";
+
     questionEl = document.createElement("h2");
     questionEl.textContent = questionsObj[1].question2;
     questionEl.setAttribute("class", "question");
@@ -141,13 +149,13 @@ function questionTwo() {
                 var falseMessage = document.createElement("h3");
                 falseMessage.textContent = "Sorry, that's not right!";
                 falseMessage.setAttribute("class", "incorrect-message");
-                listEl.appendChild(falseMessage);
+                messageWrapEl.appendChild(falseMessage);
                 timeLeft = timeLeft - 20;
             } else {
                 var trueMessage = document.createElement("h3");
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
-                listEl.appendChild(trueMessage);
+                messageWrapEl.appendChild(trueMessage);
             }
             questionEl.remove();
             listEl.innerHTML = "";
@@ -158,6 +166,8 @@ function questionTwo() {
 };
 
 function questionThree() {
+    messageWrapEl.innerHTML = "";
+
     questionEl = document.createElement("h2");
     questionEl.textContent = questionsObj[2].question3;
     questionEl.setAttribute("class", "question");
@@ -173,13 +183,13 @@ function questionThree() {
                 var falseMessage = document.createElement("h3");
                 falseMessage.textContent = "Sorry, that's not right!";
                 falseMessage.setAttribute("class", "incorrect-message");
-                listEl.appendChild(falseMessage);
+                messageWrapEl.appendChild(falseMessage);
                 timeLeft = timeLeft - 20;
             } else {
                 var trueMessage = document.createElement("h3");
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
-                listEl.appendChild(trueMessage);
+                messageWrapEl.appendChild(trueMessage);
             }
             questionEl.remove();
             listEl.innerHTML = "";
@@ -191,6 +201,8 @@ function questionThree() {
 };
 
 function questionFour() {
+    messageWrapEl.innerHTML = "";
+
     questionEl = document.createElement("h2");
     questionEl.textContent = questionsObj[3].question4;
     questionEl.setAttribute("class", "question");
@@ -206,14 +218,17 @@ function questionFour() {
                 var falseMessage = document.createElement("h3");
                 falseMessage.textContent = "Sorry, that's not right!";
                 falseMessage.setAttribute("class", "incorrect-message");
-                listEl.appendChild(falseMessage);
+                messageWrapEl.appendChild(falseMessage);
                 timeLeft = timeLeft - 20;
             } else {
                 var trueMessage = document.createElement("h3");
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
-                listEl.appendChild(trueMessage);
+                messageWrapEl.appendChild(trueMessage);
             }
+            listEl.innerHTML = "";
+            questionEl.remove();
+            messageWrapEl.innerHTML = "";
             questionFive();
         }
         listEl.appendChild(buttonEl);
@@ -222,21 +237,21 @@ function questionFour() {
 };
 
 function questionFive() {
-    questionEl.remove();
-    listEl.innerHTML = "";
-    
+    messageWrapEl.innerHTML = "";
+    imageWrapEl.innerHTML = "";
+
     questionEl = document.createElement("h2");
     questionEl.textContent = questionsObj[4].question5;
     questionEl.setAttribute("class", "question");
 
-    var imageEl = document.createElement("img");
-    imageEl.setAttribute = ("src", "./assets/images/question5img.png");
-    imageEl.setAttribute = ("alt", "var listEl = document.createElement('li');");
-    imageEl.setAttribute = ("class", "code-image");
+    imageEl = document.createElement("img");
+    imageEl.src = "./assets/images/question5img.png";
+    imageEl.alt = "var listEl = document.createElement('li');";
+    imageEl.style.width = "600px";
 
     mainEl.append(questionEl);
-    mainEl.append(imageEl);
-    
+    imageWrapEl.append(imageEl);
+
     questionsObj[4].answers.forEach(function (answer) {
         var buttonEl = document.createElement("button");
         buttonEl.textContent = answer;
@@ -258,36 +273,81 @@ function questionFive() {
             submitScore(timeLeft);
         }
         listEl.appendChild(buttonEl);
-    }) 
+    })
 };
 
 //function that shows the final page
 function submitScore(highScore) {
     questionEl.remove();
+    imageEl.remove();
     listEl.innerHTML = "";
-    console.log(highScore);
-    timerEl.textContent = "";
+    messageWrapEl.innerHTML = "";
+    timerEl.remove();
 
     var headingEl = document.createElement("h2");
     headingEl.textContent = "All done!";
     headingEl.setAttribute("class", "question");
 
     var pEl = document.createElement("p");
-    pEl.textContent = "Your high score is " + highScore;
-    pEl.setAttribute = ("class", "high-score-text");
+    pEl.textContent = "Your high score is " + highScore + ".";
+    pEl.setAttribute("class", "high-score-text");
+
+    var labelEl = document.createElement("label");
+    labelEl.setAttribute("for", "name");
+    labelEl.textContent = "Enter initials:"
+    labelEl.classList.add("label");
+
+    var submitEl = document.createElement("input");
+    submitEl.setAttribute("type", "text");
+    submitEl.setAttribute("name", "name");
+    submitEl.setAttribute("placeholder", "Initials");
+    submitEl.classList.add("form-input");
+
+    var submitButtonEl = document.createElement("button");
+    submitButtonEl.classList.add("submit-button");
+    submitButtonEl.href ="./highscores.html";
+    submitButtonEl.textContent = "Submit";
+    // submitButtonEl.textContent("Submit");
 
     mainEl.append(headingEl);
     mainEl.append(pEl);
-    //input with "enter intitals"
+    submitWrapEl.append(labelEl);
+    submitWrapEl.append(submitEl);
+    submitWrapEl.append(submitButtonEl);
     //submit button that takes you to highscore page with data
-
+    if (submitButtonEl.value !== null){
+        submitButtonEl.addEventListener("click", function (event) {
+        event.preventDefault();
+        console.log(userScores);
+        var userName = submitEl.value;
+        var userScore = {
+            score: highScore,
+            name: userName
+        };
+        // set new submission to local storage
+        userScores.push(userScore);
+        localStorage.setItem("userScores", JSON.stringify(userScores));
+        window.open("./highscores.html", "_self");
+    });
+    }
 };
 
-//function that stores the high scores
-//function that prints the scores on the highscores page in an ordered list by score
+//function that saves high scores from last page
+var loadScores = function () {
+    //need to visit the other file? If click button brings you to last page, then how tomake sure print to the right place?
+    var savedScores = JSON.parse(localStorage.getItem("userScores"));
+    for (var i = 0; i < savedScores.length; i++) {
+        var loadedScore = document.createElement("li");
+        loadedScore.textContent = savedScores[i].name + ": " + savedScores[i].score;
+      loadedScore.classList.add("highscores-list-item");
+        scoresListEl.appendChild(loadedScore);
+        //sort?
+    }
+};
 
 //Start of Game Event Listener
 startButtonEl.addEventListener("click", function () {
     countdown();
     startQuiz();
 });
+//Delete Button Event Listener
