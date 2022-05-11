@@ -322,7 +322,7 @@ function submitScore(highScore) {
     submitWrapEl.append(submitEl);
     submitWrapEl.append(submitButtonEl);
 
-    console.log(submitEl.text);
+    console.log(submitEl);
     messageWrapEl.innerHTML = "";
     
     //!!This needs to be changed to if the player doesn't enter anything or if it's a number
