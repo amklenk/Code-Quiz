@@ -82,13 +82,16 @@ function countdown() {
         } else {
             timerEl.textContent = "Timer:" + "0";
             clearInterval(timeInterval);
+            window.open("./highscores.html", "_self");
         };
     }, 1000);
 }
-
-
-//!!how do I stop the game when the timer is 0 if the timer is asynchronous!
-
+//!!I keep getting error statements in Dev, something about null?//
+//Start of Game Event Listener
+startButtonEl.addEventListener("click", function () {
+    countdown();
+    startQuiz();
+});
 //function that starts the quiz and the timer by clicking the start button
 function startQuiz() {
     var quizHeading = document.querySelector(".quiz-heading");
@@ -112,14 +115,17 @@ function questionOne() {
         buttonEl.textContent = answer;
         buttonEl.setAttribute("class", "answer");
         buttonEl.setAttribute("value", answer);
+        listEl.appendChild(buttonEl);
         buttonEl.onclick = function () {
             if (this.value !== questionsObj[0].correct) {
+                messageWrapEl.textContent = "";
                 var falseMessage = document.createElement("h3");
                 falseMessage.textContent = "Sorry, that's not right!";
                 falseMessage.setAttribute("class", "incorrect-message");
                 messageWrapEl.appendChild(falseMessage);
                 timeLeft = timeLeft - 20;
             } else {
+                messageWrapEl.textContent = "";
                 var trueMessage = document.createElement("h3");
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
@@ -127,14 +133,13 @@ function questionOne() {
             }
             questionTwo();
         }
-        listEl.appendChild(buttonEl);
     })
 };
+
 
 function questionTwo() {
     mainEl.innerHTML = "";
     listEl.innerHTML = "";
-    messageWrapEl.innerHTML = "";
 
     questionEl = document.createElement("h2");
     questionEl.textContent = questionsObj[1].question2;
@@ -146,29 +151,30 @@ function questionTwo() {
         buttonEl.textContent = answer;
         buttonEl.setAttribute("class", "answer");
         buttonEl.setAttribute("value", answer);
+        listEl.appendChild(buttonEl);
         buttonEl.onclick = function () {
             if (this.value !== questionsObj[1].correct) {
+                messageWrapEl.textContent = "";
                 var falseMessage = document.createElement("h3");
                 falseMessage.textContent = "Sorry, that's not right!";
                 falseMessage.setAttribute("class", "incorrect-message");
                 messageWrapEl.appendChild(falseMessage);
                 timeLeft = timeLeft - 20;
             } else {
+                messageWrapEl.textContent = "";
                 var trueMessage = document.createElement("h3");
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
                 messageWrapEl.appendChild(trueMessage);
             }
-            questionEl.remove();
-            listEl.innerHTML = "";
             questionThree();
         }
-        listEl.appendChild(buttonEl);
     })
 };
 
 function questionThree() {
-    messageWrapEl.innerHTML = "";
+    mainEl.innerHTML = "";
+    listEl.innerHTML = "";
 
     questionEl = document.createElement("h2");
     questionEl.textContent = questionsObj[2].question3;
@@ -180,30 +186,30 @@ function questionThree() {
         buttonEl.textContent = answer;
         buttonEl.setAttribute("class", "answer");
         buttonEl.setAttribute("value", answer);
+        listEl.appendChild(buttonEl);
         buttonEl.onclick = function () {
             if (this.value !== questionsObj[2].correct) {
+                messageWrapEl.innerHTML = "";
                 var falseMessage = document.createElement("h3");
                 falseMessage.textContent = "Sorry, that's not right!";
                 falseMessage.setAttribute("class", "incorrect-message");
                 messageWrapEl.appendChild(falseMessage);
                 timeLeft = timeLeft - 20;
             } else {
+                messageWrapEl.innerHTML = "";
                 var trueMessage = document.createElement("h3");
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
                 messageWrapEl.appendChild(trueMessage);
             }
-            questionEl.remove();
-            listEl.innerHTML = "";
             questionFour();
         }
-        listEl.appendChild(buttonEl);
-
     })
 };
 
 function questionFour() {
-    messageWrapEl.innerHTML = "";
+    mainEl.innerHTML = "";
+    listEl.innerHTML = "";
 
     questionEl = document.createElement("h2");
     questionEl.textContent = questionsObj[3].question4;
@@ -217,20 +223,19 @@ function questionFour() {
         buttonEl.setAttribute("value", answer);
         buttonEl.onclick = function () {
             if (this.value !== questionsObj[3].correct) {
+                messageWrapEl.innerHTML = "";
                 var falseMessage = document.createElement("h3");
                 falseMessage.textContent = "Sorry, that's not right!";
                 falseMessage.setAttribute("class", "incorrect-message");
                 messageWrapEl.appendChild(falseMessage);
                 timeLeft = timeLeft - 20;
             } else {
+                messageWrapEl.innerHTML = "";
                 var trueMessage = document.createElement("h3");
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
                 messageWrapEl.appendChild(trueMessage);
             }
-            listEl.innerHTML = "";
-            questionEl.remove();
-            messageWrapEl.innerHTML = "";
             questionFive();
         }
         listEl.appendChild(buttonEl);
@@ -239,7 +244,8 @@ function questionFour() {
 };
 
 function questionFive() {
-    messageWrapEl.innerHTML = "";
+    mainEl.innerHTML = "";
+    listEl.innerHTML = "";
 
     questionEl = document.createElement("h2");
     questionEl.textContent = questionsObj[4].question5;
@@ -257,8 +263,10 @@ function questionFive() {
         var buttonEl = document.createElement("button");
         buttonEl.textContent = answer;
         buttonEl.setAttribute("class", "answer");
-        buttonEl.setAttribute("value", answer);
+        buttonEl.setAttribute("value", "answer");
+        listEl.appendChild(buttonEl);
         buttonEl.onclick = function () {
+            messageWrapEl.innerHTML = "";
             if (this.value !== questionsObj[4].correct) {
                 var falseMessage = document.createElement("h3");
                 falseMessage.textContent = "Sorry, that's not right!";
@@ -266,6 +274,7 @@ function questionFive() {
                 listEl.appendChild(falseMessage);
                 timeLeft = timeLeft - 20;
             } else {
+                messageWrapEl.innerHTML = "";
                 var trueMessage = document.createElement("h3");
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
@@ -273,7 +282,6 @@ function questionFive() {
             }
             submitScore(timeLeft);
         }
-        listEl.appendChild(buttonEl);
     })
 };
 
@@ -282,7 +290,6 @@ function submitScore(highScore) {
     questionEl.remove();
     imageEl.remove();
     listEl.innerHTML = "";
-    messageWrapEl.innerHTML = "";
     timerEl.remove();
 
     var headingEl = document.createElement("h2");
@@ -315,7 +322,8 @@ function submitScore(highScore) {
     submitWrapEl.append(submitEl);
     submitWrapEl.append(submitButtonEl);
 
-    console.log(submitEl);
+    console.log(submitEl.text);
+    messageWrapEl.innerHTML = "";
     
     //!!This needs to be changed to if the player doesn't enter anything or if it's a number
     if (submitEl.value !== null || submitEl.value === NaN) {
@@ -349,9 +357,4 @@ var loadScores = function () {
     loadScores();
 };
 
-//Start of Game Event Listener
-startButtonEl.addEventListener("click", function () {
-    countdown();
-    startQuiz();
-});
 //Delete Button Event Listener
