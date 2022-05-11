@@ -53,7 +53,8 @@ body {
 }
 .highscores-list {
     width: 80%;
-    height: 300px;
+    height: 200px;
+    margin-top: 20px;
     font-family: monospace;
 }
 
@@ -61,7 +62,7 @@ body {
     font-size: 30px;
     color: var(--tertiary-color);
     text-align: left;
-    margin-left: 10%;
+    margin-left: 15%;
 }
 
 .button-wrapper {

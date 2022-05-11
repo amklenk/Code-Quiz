@@ -6,8 +6,8 @@ This project was created to give a timed quiz that stores high scores to a boot 
 * When the start button is clicked, the timer starts and the first question is shown.
 * When a question is answered, the next question appears.
 * When a question is answered incorrectly, time is subtracted from the timer.
-*When all questions are answered or the timer says 0, the game is over.
-*When the game is over, the user can save their initials and high score.
+* When all questions are answered or the timer says 0, the game is over.
+* When the game is over, the user can save their initials and high score.
 
 ## Table of Contents (Optional)
 - [Installation](#installation)
@@ -28,11 +28,11 @@ The repository, Code-Quiz, was created and cloned from GitHub. An index.html fil
 ## Usage
 
 Below are screenshots that show the site before the quiz starts, the site during a question, and then when the high scores page is deployed.
-![Index Page at Start]()
-![Index Page at Question 1]()
-![Highscores Page]()
+![Index Page at Start](./assets/images/StartPage.png)
+![Index Page at Question 1](./assets/images/Question1.png)
+![Highscores Page](./assets/images/highscores.png)
 
-The site should be navigable via clicking the start button, each answer choice, and then submit after the user enters their initials.
+The site should be navigable via clicking the start button, each answer choice, then submit after the user enters their initials, and the go back button on the highscores page.
 
 ## Creation
 Each of the requirements were fulfilled:
@@ -46,7 +46,7 @@ Once the repository was stored locally, the html, css, and js files were created
 
 The boilerplate HTML was created first for both the index and highscores pages. Then hard coded content (which would be removed later dynamically for the index page) was coded. The CSS styling sheets were both coded to reflect the colors/style of the VS code theme Night Owl. Each styling sheet is organized by where each element appears in the HTML code and is then organized by element and then by class.
 
-The JS code in the script file was organized to flow as the site flows. The global variables are at the top so that they can be accessed throughout the game. The question object is there as well. The timer function is listed first and then the event listener to start the game and the timer. Each question has its own function to dynamically create elements, set their attributes and text content(either referencing the questions object or hard coded) and append them to the page. Each subsequent question removes the previous elements and then repeats the process of the question before it. The last question function calls on the saveScores function, which saves the scores to local storage by pushing the values into a global array and using JSON.stringify. This function also directs the user to the highscores page. The highscores page has its own script page, highscores.js. It contains the referenced global variables and the function loadScores which prints the scores to the page in order by score. The user is then able to navigate back to the quiz or erase their high scores. 
+The JS code in the script file was organized to flow as the main site flows. The global variables are at the top so that they can be accessed throughout the game. The question object is there as well. The timer function is listed first and then the event listener to start the game and the timer. Each question has its own function to dynamically create elements, set their attributes and text content(either referencing the questions object or hard coded) and append them to the page. Each subsequent question removes the previous elements and then repeats the process of the question before it. The last question function calls on the saveScores function, which saves the scores to local storage by pushing the values into a global array and using JSON.stringify. This function also directs the user to the highscores page. The highscores page has its own script page, highscores.js. It contains the referenced global variables and the function loadScores which prints the scores to the page in descending order by score. The user is then able to navigate back to the quiz or erase their high scores.
 
 ## Credits
 The following MDN website was used as a reference page for the quiz answers:
@@ -78,7 +78,7 @@ SOFTWARE.
 
 ## Project Status
 
-This project is a work in progress. It will be updated via a develop and feature branches going forward. The timer lags when the start game button is clicked and needs to be fixed. The appending/removing of each answer message doesn't flow seamlessly. The design needs to be reconfigured for smaller screens (medium and small), perhaps using Bootstrap.
+This project is a work in progress. It will be updated via a develop and feature branches going forward. The timer lags when the start game button is clicked and needs to be fixed. The appending/removing of each answer message doesn't flow seamlessly. The design needs to be reconfigured for smaller screens (medium and small), perhaps using Bootstrap and/or media queries.
 
 
 

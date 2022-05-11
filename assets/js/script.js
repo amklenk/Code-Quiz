@@ -133,7 +133,6 @@ function questionOne() {
     })
 };
 
-
 function questionTwo() {
     mainEl.innerHTML = "";
     listEl.innerHTML = "";
@@ -218,6 +217,7 @@ function questionFour() {
         buttonEl.textContent = answer;
         buttonEl.setAttribute("class", "answer");
         buttonEl.setAttribute("value", answer);
+        listEl.appendChild(buttonEl);
         buttonEl.onclick = function () {
             if (this.value !== questionsObj[3].correct) {
                 messageWrapEl.innerHTML = "";
@@ -235,7 +235,6 @@ function questionFour() {
             }
             questionFive();
         }
-        listEl.appendChild(buttonEl);
     })
 
 };
@@ -260,25 +259,23 @@ function questionFive() {
         var buttonEl = document.createElement("button");
         buttonEl.textContent = answer;
         buttonEl.setAttribute("class", "answer");
-        buttonEl.setAttribute("value", "answer");
+        buttonEl.setAttribute("value", answer);
         listEl.appendChild(buttonEl);
         buttonEl.onclick = function () {
-            messageWrapEl.innerHTML = "";
             if (this.value !== questionsObj[4].correct) {
+                messageWrapEl.innerHTML = "";
                 var falseMessage = document.createElement("h3");
                 falseMessage.textContent = "Sorry, that's not right!";
                 falseMessage.setAttribute("class", "incorrect-message");
-                listEl.appendChild(falseMessage);
+                messageWrapEl.appendChild(falseMessage);
                 timeLeft = timeLeft - 20;
             } else {
                 messageWrapEl.innerHTML = "";
                 var trueMessage = document.createElement("h3");
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
-                listEl.appendChild(trueMessage);
-                timeLeft = timeLeft;
+                messageWrapEl.appendChild(trueMessage);
             }
-            console.log(timeLeft);
             submitScore(timeLeft);
         }
     })
@@ -286,6 +283,7 @@ function questionFive() {
 
 //function that shows the final page
 function submitScore(highScore) {
+    console.log(highScore);
     questionEl.remove();
     imageEl.remove();
     listEl.innerHTML = "";
