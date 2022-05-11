@@ -1,26 +1,38 @@
 # Code-Quiz
 
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+## Description
 
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
+This project was created to give a timed quiz that stores high scores to a boot camp student so that they can gauge their progress. This is done by fulfilling the following requirements:
+* When the start button is clicked, the timer starts and the first question is shown.
+* When a question is answered, the next question appears.
+* When a question is answered incorrectly, time is subtracted from the timer.
+*When all questions are answered or the timer says 0, the game is over. (CHECK THIS ONE)
+*When the game is over, the user can save their initials and high score.
+
+## Table of Contents (Optional)
+- [Installation](#installation)
+- [Links](#links)
+- [Usage](#usage)
+- [Creation](#creation)
+- [Credits](#credits)
+- [License](#license)
+
+## Installation
+The repository, Code-Quiz, was created and cloned from GitHub. An index.html file and highscores.html file were created and were coded to contain the site content for the index and highscore pages, respectively. A folder, assets, was created to house two folders, css and js.  The css folder contains the style sheet for the index page, style.css, and the style sheet for the highscore page, hsstyle.css, which were created and coded to contain the site formatting and design for the index and highscore pages, respectively. The js folder contains the script sheet, script.js, which was created and coded to allow the site to be dynamic.
+
+## Links
+- [GitHub Repository](https://github.com/amklenk/Code-Quiz)
+- [GitHub Pages Site](https://amklenk.github.io/Code-Quiz/)
+
+## Usage
+
+Below are screenshots that show the site before the quiz starts, the site during a question, and then when the high scores page is deployed.
+![Index Page at Start]()
+![Index Page at Question 1]()
+![Highscores Page]()
 
 
-1. pseudocode 
-2. Decide what goes in HTML and CSS files
-3a. Write what is going to be fixed on the page before the JS starts (onclick)
-3. create skeleton of variables, functions, event listeners
-4. Go through each function, code and debug a line at a time
-5. Try every way to break it!
-6. Maybe refactor
+
+
+
+

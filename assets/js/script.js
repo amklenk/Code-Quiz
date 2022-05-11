@@ -79,6 +79,8 @@ function countdown() {
         if (timeLeft > 0) {
             timerEl.textContent = "Timer: " + timeLeft;
             timeLeft--;
+//!!! Check this//
+            submitScore();
         } else {
             timerEl.textContent = "Timer:" + "--";
             clearInterval(timeInterval);
@@ -343,6 +345,7 @@ var loadScores = function () {
         scoresListEl.appendChild(loadedScore);
         //sort?
     }
+    loadScores();
 };
 
 //Start of Game Event Listener
