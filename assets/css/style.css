@@ -156,6 +156,10 @@ header {
 color: var(--tertiary-color);
 }
 
+.message-list {
+width: 100%;
+}
+
 .correct-message {
     margin-top: 5%;
     width: 50%;

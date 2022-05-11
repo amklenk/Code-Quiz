@@ -1,6 +1,6 @@
 //global variables
 //add in local storage info
-var userScores = JSON.parse(localStorage.getItem("highScore"))||[];
+var userScores = JSON.parse(localStorage.getItem("highScore")) || [];
 var timeLeft = 100;
 var timerEl = document.querySelector("#timer");
 var mainEl = document.querySelector(".question-wrapper");
@@ -79,15 +79,15 @@ function countdown() {
         if (timeLeft > 0) {
             timerEl.textContent = "Timer: " + timeLeft;
             timeLeft--;
-//!!! Check this//
-            submitScore();
         } else {
-            timerEl.textContent = "Timer:" + "--";
+            timerEl.textContent = "Timer:" + "0";
             clearInterval(timeInterval);
-            //add call to last page here to submit high score
-        }
+        };
     }, 1000);
 }
+
+
+//!!how do I stop the game when the timer is 0 if the timer is asynchronous!
 
 //function that starts the quiz and the timer by clicking the start button
 function startQuiz() {
@@ -240,7 +240,6 @@ function questionFour() {
 
 function questionFive() {
     messageWrapEl.innerHTML = "";
-    imageWrapEl.innerHTML = "";
 
     questionEl = document.createElement("h2");
     questionEl.textContent = questionsObj[4].question5;
@@ -307,30 +306,32 @@ function submitScore(highScore) {
 
     var submitButtonEl = document.createElement("button");
     submitButtonEl.classList.add("submit-button");
-    submitButtonEl.href ="./highscores.html";
+    submitButtonEl.href = "./highscores.html";
     submitButtonEl.textContent = "Submit";
-    // submitButtonEl.textContent("Submit");
 
     mainEl.append(headingEl);
     mainEl.append(pEl);
     submitWrapEl.append(labelEl);
     submitWrapEl.append(submitEl);
     submitWrapEl.append(submitButtonEl);
-    //submit button that takes you to highscore page with data
-    if (submitButtonEl.value !== null){
+
+    console.log(submitEl);
+    
+    //!!This needs to be changed to if the player doesn't enter anything or if it's a number
+    if (submitEl.value !== null || submitEl.value === NaN) {
         submitButtonEl.addEventListener("click", function (event) {
-        event.preventDefault();
-        console.log(userScores);
-        var userName = submitEl.value;
-        var userScore = {
-            score: highScore,
-            name: userName
-        };
-        // set new submission to local storage
-        userScores.push(userScore);
-        localStorage.setItem("userScores", JSON.stringify(userScores));
-        window.open("./highscores.html", "_self");
-    });
+            event.preventDefault();
+            console.log(submitEl);
+            var userName = submitEl.value;
+            var userScore = {
+                score: highScore,
+                name: userName
+            };
+            // set new submission to local storage
+            userScores.push(userScore);
+            localStorage.setItem("userScores", JSON.stringify(userScores));
+            window.open("./highscores.html", "_self");
+        });
     }
 };
 
@@ -341,7 +342,7 @@ var loadScores = function () {
     for (var i = 0; i < savedScores.length; i++) {
         var loadedScore = document.createElement("li");
         loadedScore.textContent = savedScores[i].name + ": " + savedScores[i].score;
-      loadedScore.classList.add("highscores-list-item");
+        loadedScore.classList.add("highscores-list-item");
         scoresListEl.appendChild(loadedScore);
         //sort?
     }
