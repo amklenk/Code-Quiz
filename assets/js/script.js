@@ -68,7 +68,7 @@ var questionsObj = [
 
 ];
 
-//functions
+//functions and event listeners
 //function for the timer
 function countdown() {
     //variable for the start time
@@ -83,8 +83,8 @@ function countdown() {
         };
     }, 1000);
 }
-//!!I keep getting error statements in Dev, something about null?//
-//Start of Game Event Listener
+
+//start of game event listener
 startButtonEl.addEventListener("click", function () {
     countdown();
     startQuiz();
@@ -276,7 +276,9 @@ function questionFive() {
                 trueMessage.textContent = "That's right!";
                 trueMessage.setAttribute("class", "correct-message");
                 listEl.appendChild(trueMessage);
+                timeLeft = timeLeft;
             }
+            console.log(timeLeft);
             submitScore(timeLeft);
         }
     })
@@ -319,15 +321,12 @@ function submitScore(highScore) {
     submitWrapEl.append(submitEl);
     submitWrapEl.append(submitButtonEl);
 
-    console.log(submitEl);
     messageWrapEl.innerHTML = "";
-    
-    //!!This needs to be changed to if the player doesn't enter anything or if it's a number
-    if (submitEl.value !== null || submitEl.value === NaN) {
-        var userScoreArray = [];
+
+    if (submitEl.value !== null) {
+        var userScoreArray = JSON.parse(window.localStorage.getItem("userScoreArray")) || [];
         submitButtonEl.addEventListener("click", function (event) {
             event.preventDefault();
-            console.log(submitEl);
             var userName = submitEl.value;
             var userScore = {
                 score: highScore,
