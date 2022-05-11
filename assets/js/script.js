@@ -1,6 +1,5 @@
 //global variables
 //add in local storage info
-var userScores = JSON.parse(localStorage.getItem("highScore")) || [];
 var timeLeft = 100;
 var timerEl = document.querySelector("#timer");
 var mainEl = document.querySelector(".question-wrapper");
@@ -68,8 +67,6 @@ var questionsObj = [
     },
 
 ];
-var scoresListEl = document.querySelector(".highscores-list");
-var deleteButtonEl = document.querySelector(".clear-btn");
 
 //functions
 //function for the timer
@@ -327,6 +324,7 @@ function submitScore(highScore) {
     
     //!!This needs to be changed to if the player doesn't enter anything or if it's a number
     if (submitEl.value !== null || submitEl.value === NaN) {
+        var userScoreArray = [];
         submitButtonEl.addEventListener("click", function (event) {
             event.preventDefault();
             console.log(submitEl);
@@ -336,25 +334,11 @@ function submitScore(highScore) {
                 name: userName
             };
             // set new submission to local storage
-            userScores.push(userScore);
-            localStorage.setItem("userScores", JSON.stringify(userScores));
+            userScoreArray.push(userScore);
+            localStorage.setItem("userScoreArray", JSON.stringify(userScoreArray));
             window.open("./highscores.html", "_self");
         });
     }
 };
 
-//function that saves high scores from last page
-var loadScores = function () {
-    //need to visit the other file? If click button brings you to last page, then how tomake sure print to the right place?
-    var savedScores = JSON.parse(localStorage.getItem("userScores"));
-    for (var i = 0; i < savedScores.length; i++) {
-        var loadedScore = document.createElement("li");
-        loadedScore.textContent = savedScores[i].name + ": " + savedScores[i].score;
-        loadedScore.classList.add("highscores-list-item");
-        scoresListEl.appendChild(loadedScore);
-        //sort?
-    }
-    loadScores();
-};
 
-//Delete Button Event Listener
