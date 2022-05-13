@@ -78,7 +78,7 @@ SOFTWARE.
 
 ## Project Status
 
-This project is a work in progress. It will be updated via a develop and feature branches going forward. The timer lags when the start game button is clicked and needs to be fixed. The appending/removing of each answer message doesn't flow seamlessly. The design needs to be reconfigured for smaller screens (medium and small), perhaps using Bootstrap and/or media queries.
+This project is a work in progress. It will be updated via a develop and feature branches going forward. The JS code has a lot of repetition and needs to be refactored, perhaps with one function for generating the questions and answers with for loops for printing both. The timer lags when the start game button is clicked and needs to be fixed. The appending/removing of each answer message doesn't flow seamlessly. The design needs to be reconfigured for mobile screens, perhaps using Bootstrap and/or media queries.
 
 
 
